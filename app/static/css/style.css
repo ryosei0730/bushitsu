@@ -91,3 +91,8 @@ main {
 .from-label-group {
     border-radius: 2rem;
 }
+
+.storelist img {
+    height: 150px;
+    object-fit: contain;
+}
