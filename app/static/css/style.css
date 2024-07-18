@@ -96,3 +96,8 @@ main {
     height: 150px;
     object-fit: contain;
 }
+
+.stafflist img {
+    height: 250px;
+    object-fit: contain;
+}

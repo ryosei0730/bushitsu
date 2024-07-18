@@ -15,7 +15,7 @@
                         <h5 class="font-weight-bold">{{ store.name }}店</h5>
                         <p>{{ store.address }}</p>
                     </div>
-                    <a href="" class="stretched-link"></a>
+                    <a href="{% url 'staff' store.pk %}" class="stretched-link"></a>
                 </div>
             </div>
         {% empty %}
