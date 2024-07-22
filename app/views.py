@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import View
-from .models import Store, Staff, Booking
+from .models import Staff, Booking
 from datetime import datetime, date, timedelta, time
 from django.db.models import Q
 from django.utils.timezone import localtime, make_aware
@@ -8,7 +8,10 @@ from app.forms import BookingForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.decorators.http import require_POST
 
-class StoreView(View):
+
+
+
+class StaffView(View):
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             start_date = date.today()
@@ -16,28 +19,16 @@ class StoreView(View):
             if weekday != 6:
                 start_date = start_date - timedelta(days=weekday + 1)
             return redirect('mypage', start_date.year, start_date.month, start_date.day)
-            
-        store_data = Store.objects.all()
-
-        return render(request, 'app/store.html', {
-            'store_data': store_data
-        })
-
-
-class StaffView(View):
-    def get(self, request, *args, **kwargs):
-        store_data = get_object_or_404(Store, id=self.kwargs['pk'])
-        staff_data = Staff.objects.filter(store=store_data).select_related('user')
+        staff_data = Staff.objects.select_related('user')
 
         return render(request, 'app/staff.html', {
-            'store_data': store_data,
             'staff_data': staff_data
         })
 
 
 class CalendarView(View):
     def get(self, request, *args, **kwargs):
-        staff_data = Staff.objects.filter(id=self.kwargs['pk']).select_related('user').select_related('store')[0]
+        staff_data = Staff.objects.filter(id=self.kwargs['pk']).select_related('user')[0]
         today = date.today()
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
@@ -81,7 +72,7 @@ class CalendarView(View):
 
 class BookingView(View):
     def get(self, request, *args, **kwargs):
-        staff_data = Staff.objects.filter(id=self.kwargs['pk']).select_related('user').select_related('store')[0]
+        staff_data = Staff.objects.filter(id=self.kwargs['pk']).select_related('user')[0]
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
         day = self.kwargs.get('day')
@@ -136,7 +127,7 @@ class ThanksView(View):
 
 class MyPageView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
-        staff_data = Staff.objects.filter(id=request.user.id).select_related('user').select_related('store')[0]
+        staff_data = Staff.objects.filter(id=request.user.id).select_related('user')[0]
         year = self.kwargs.get('year')
         month = self.kwargs.get('month')
         day = self.kwargs.get('day')
