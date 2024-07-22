@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 from accounts.models import CustomUser
-from accounts.forms import ProfileForm, SignupUserForm
+from accounts.forms import ProfileForm
 from allauth.account import views
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -61,8 +61,5 @@ class LogoutView(views.LogoutView):
         return redirect('/')
 
 
-class SignupView(views.SignupView):
-    template_name = 'accounts/signup.html'
-    form_class = SignupUserForm
 
     
