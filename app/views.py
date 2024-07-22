@@ -51,7 +51,7 @@ class CalendarView(View):
         end_day = days[-1]
 
         calendar = {}
-        for hour in range(10, 21):
+        for hour in range(7, 22):
             row = {}
             for day in days:
                 row[day] = True
@@ -116,9 +116,6 @@ class BookingView(View):
                 booking.start = start_time
                 booking.end = end_time
                 booking.first_name = form.cleaned_data['first_name']
-                booking.last_name = form.cleaned_data['last_name']
-                booking.tel = form.cleaned_data['tel']
-                booking.remarks = form.cleaned_data['remarks']
                 booking.save()
                 return redirect('thanks')
         
@@ -149,7 +146,7 @@ class MyPageView(LoginRequiredMixin, View):
         end_day = days[-1]
 
         calendar = {}
-        for hour in range(10, 21):
+        for hour in range(7, 22):
             row = {}
             for day_ in days:
                 row[day_] = ''

@@ -32,22 +32,9 @@
             <table class="booking_table mb-4">
                 <tbody>
                     <tr>
-                        <th class="header">お名前</th>
+                        <th class="header">バンド名</th>
                         <td class="data form_wrap form_wrap__2col">
-                            {% render_field form.first_name class="form-control" placeholder="姓" %}
-                            {% render_field form.last_name class="form-control" placeholder="名" %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="header">電話番号</th>
-                        <td class="data">
-                            {% render_field form.tel class="form-control" placeholder="080-1234-5678" %}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th class="header">その他備考</th>
-                        <td class="data">
-                            {% render_field form.remarks class="form-control" %}
+                            {% render_field form.first_name class="form-control" placeholder="バンド名" %}
                         </td>
                     </tr>
                 </tbody>
