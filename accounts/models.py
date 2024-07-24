@@ -34,7 +34,8 @@ class UserManager(UserManager):
     
 class CustomUser(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('メールアドレス', unique=True)
-    first_name = models.CharField('名前', max_length=30)
+    first_name = models.CharField(('イベント名'), max_length=30)
+
 
     is_staff = models.BooleanField(
         ("staff status"),

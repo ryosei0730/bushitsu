@@ -21,4 +21,4 @@ class Booking(models.Model):
         start = timezone.localtime(self.start).strftime('%Y/%m/%d %H:%M')
         end = timezone.localtime(self.end).strftime('%Y/%m/%d %H:%M')
 
-        return f'{self.first_name}{self.last_name} {start} ~ {end} {self.staff}'
+        return f'{self.first_name} {start} ~ {end} {self.staff}'

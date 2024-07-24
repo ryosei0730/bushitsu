@@ -8,12 +8,8 @@
         <table class="booking_table mb-4">
             <tbody>
                 <tr>
-                    <th class="header">店舗</th>
-                    <td class="data">{{ staff_data.store.name }}店</td>
-                </tr>
-                <tr>
-                    <th class="header">スタッフ</th>
-                    <td class="data">{{ staff_data.user.first_name }} {{ staff_data.user.last_name }}</td>
+                    <th class="header">イベント</th>
+                    <td class="data">{{ staff_data.user.first_name }}</td>
                 </tr>
                 <tr>
                     <th class="header">日程</th>
@@ -21,7 +17,7 @@
                         {% for error in form.non_field_errors %}
                             <h5 class="text-danger">{{ error|linebreaksbr }}</h5>
                         {% endfor %}
-                        {{ year }}年{{ month }}月{{ day }}日 {{ hour }}:00
+                        {{ year }}年{{ month }}月{{ day }}日 {{ hour }}:00～{{hour}}:59
                     </td>
                 </tr>
             </tbody>
