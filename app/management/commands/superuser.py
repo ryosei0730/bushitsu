@@ -13,3 +13,4 @@ class Command(BaseCommand):
                 password=settings.SUPERUSER_PASSWORD
             )
             print("スーパーユーザー作成")
+            
