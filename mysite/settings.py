@@ -26,12 +26,12 @@ env.read_env(os.path.join(BASE_DIR, ".env"))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-g-nd8ipb0d@d@6b4pt4cygh)pl2oz9@)*d8j)u62s+t4gmvxsg'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -157,3 +157,6 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+import sys
+print("ALLOWED_HOSTS:", ALLOWED_HOSTS, file=sys.stdout)
